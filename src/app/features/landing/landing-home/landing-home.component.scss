@@ -1,0 +1,257 @@
+.jj{
+    text-align: left !important;
+    vertical-align: middle !important;
+}
+
+.adjust-col1-t2{
+  width: 14%;
+}
+
+.adjust-col2-t2{
+  width: 14%;
+}
+
+.adjust-col3-t2 , .adjust-col4-t2 , .adjust-col5-t2 , .adjust-col3-t1 , .adjust-col3-t1 , .adjust-col3-t1{
+  width: 24%;
+}
+
+.jj1{
+  text-align: left !important;
+  vertical-align: middle !important;
+  /* border: none !important; */
+}
+
+.mat-sort-header-container {
+    justify-content: center !important;
+}
+
+.mat-tab-group .mat-tab-header .mat-tab-label-container .mat-tab-list .mat-tab-labels .mat-tab-label.mat-tab-label-active
+{
+  background-color: rgb(249 250 251) !important;
+  /* color: rgba(var(--talib-text-secondary-rgb), var(--tw-text-opacity)) !important; */
+  color: orange !important;
+}
+
+.mat-tab-label, .mat-tab-link{
+  font-size: 12px;
+}
+
+.tab-check .mat-tab-body-content{
+  padding: 0px ;
+}
+
+.mat-expansion-panel-body {
+  padding: 0px !important;
+}
+
+/* .djf{
+  display:inline;
+} */
+
+
+.checking{
+  display: flex;
+  flex-direction: row;
+  /* width: 25%; */
+}
+.size{
+  width:25%;
+  box-shadow: none!important;
+}
+
+table {
+    width: 100%;
+  }
+
+.heading{
+  display: inline;
+  /* padding: 5px; */
+  /* padding-top:15px; */
+  padding-left:15px;
+  font-size: 18px;
+}
+
+.take .mat-select-value{    
+  color: orange!important;
+  font-size: 12px;
+
+  }
+  
+  /* To make the 1st table color spread over  */
+  .Mat-change .mat-expansion-panel-body{
+    padding:0 !important;
+  }
+
+  .Mat-check:hover{
+     background: transparent!important; 
+  }
+
+
+
+  .Hello{
+    display: flex !important;
+    /* justify-content: space-around !important; */
+        border: none !important;
+        box-shadow:  none !important;
+  }
+
+  .mat-form-field.mat-form-field-appearance-fill .mat-form-field-wrapper .mat-form-field-flex {
+    box-shadow:  none !important;
+  }
+  .SUV .mat-form-field-flex, .SUV1 .mat-form-field-flex{
+    border-bottom: 2px black solid ;
+    /* box-shadow:  none !important; */
+  }
+
+  /* .SUV .mat-form-field-flex:hover , .SUV1 .mat-form-field-flex:hover{
+    //border: 5px solid red;
+  } */
+
+  .SUV .mat-select-arrow, .SUV1 .mat-select-arrow{
+    /* border: none; */
+   color: orange !important;
+  }
+
+  /* .SUV .mat-select-arrow:hover {
+    border: 5px solid red !important;
+   
+  } */
+
+.hh{
+  border-color: white;
+  box-shadow: none !important;
+}
+
+/* .mat-select-arrow:hover {
+  border-color: orange !important; */
+  /* color: orange !important; */
+ 
+/* } */
+
+
+.icons{
+  font-size: 12px;
+}
+
+
+/* .not-empty-select.mat-option {
+  margin: 1rem 0;
+  overflow: visible;
+  line-height: initial;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}
+.not-empty-select.mat-option i {
+  display: block;
+  font-size: 1.5rem;
+  opacity: 0.6;
+  margin-left: 0.5rem;
+
+} */
+
+
+.mat-select-panel mat-option.mat-option {
+  height: unset;
+  display:block;
+  font-size: 0.7rem;
+}
+
+.mat-option-text.mat-option-text {
+  white-space: normal;
+}
+
+.mat-header-row, .mat-row {
+  min-height: 30px;
+}
+
+.SUV1{
+  margin-left: 33%;
+  /* margin-right: 3%; */
+  border: none ;
+}
+
+
+:host ::ng-deep .mat-sort-header-container { 
+  display: flex;  
+  justify-content: center; 
+}
+
+th.mat-header-cell, td.mat-cell { 
+   text-align: center;  
+}
+
+/* .heights{
+  text-align: right !important;
+} */
+
+table tr.mat-row {
+  height: 30px;
+}
+
+
+#chart {
+  max-width: 60px;
+  /* margin: 2px auto; */
+}
+
+.mat-button-toggle-group {
+  height: 20px;
+  max-width: 80px;
+  align-items: center;
+}
+
+
+.mat-cell, .mat-header-cell {
+  border: none !important;
+}
+
+.mat-button-toggle-group .mat-button-toggle.mat-button-toggle-checked .mat-button-toggle-label-content{
+  color: orange !important;
+  background-color: #f3e8d5 !important;
+}
+
+.mat-cell{
+  font-size: 12px;
+  min-height: 30px;
+  /* text-align: center; */
+  border-right: 1px solid rgb(206, 200, 200) !important;
+}
+
+.mat-header-cell{
+  border-right: 1px solid rgb(206, 200, 200) !important;
+  text-align: center;
+}
+
+.adjust-col1-t1{
+  border-right: 0px !important;
+  width: 14%;
+}
+
+.adjust-col2-t1{
+  width: 14%;
+}
+
+.aligningCols{
+  padding-left: 24px !important;
+}
+
+.mat-select .mat-select-value .mat-select-value-text > * {
+  overflow: visible;
+  white-space: pre-wrap !important;
+  text-overflow: clip !important;
+  margin: 4px 0px !important;
+  line-height: 1.2 !important;
+  word-wrap: break-word !important;
+}
+
+.mat-tab-label-content{
+padding-bottom: 24px;
+}
+
+.mat-tab-label-container{
+  height: 22px;
+}
+
+/* .mat-tab-group .mat-tab-body-content{
+  padding: 0px;
+} */

@@ -1,0 +1,21 @@
+<!-- <div class="search-container">
+    <span>Search:</span>
+    <input type="text" [(ngModel)]="enteredSearchValue" (input)="onSearchTextChanged()">
+</div> -->
+
+<div class="w-full sm:min-w-80">
+    <mat-form-field class="talib-mat-no-subscript w-full searching">
+      <mat-icon
+        class="area text-gray-400"
+        matPrefix
+      >search</mat-icon>
+      <input
+        class="font-light text-sm text-gray-400"
+        matInput
+        [placeholder]="'Search'"
+        [(ngModel)]="enteredSearchValue" 
+        (input)="onSearchTextChanged()"
+      />
+    </mat-form-field>
+
+</div>

@@ -1,0 +1,446 @@
+<!-- Loading bar -->
+<!-- <talib-loading-bar></talib-loading-bar> -->
+
+
+
+<div *ngIf="togglenumber == 1" class="text-primary">
+
+    <br />
+    <span class="heading">New Scenario</span>
+    <span class="back" (click)="back()" style="float:right;  font-size: 20px; padding-right: 5%;">&#10006;</span>
+    <br />
+    
+    <div class="first mt-4" style="float: left">
+      <mat-card class="example-card">
+    
+        <div *ngIf="pagenumber == 1">
+          <mat-card-title class="text-base pb-4">
+            <div class="font-semibold text-primary" style="display:inline;"> Simulator </div>
+            <div class="text-sm text-stone-400" style="float: right;"> Step {{pagenumber}} of {{max_page_number}} </div>
+          </mat-card-title>
+          <div class="font-semibold pl-0.5 pb-4 text-primary">Module</div>
+          <mat-card-content [style.overflow]="'auto'">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 w-full min-w-0">
+              <div class="flex flex-col flex-auto p-6 bg-card border shadow rounded-2xl overflow-hidden">
+                <div class="flex flex-col content-center items-center mt-2">
+                  <div class="text-7xl sm:text-8xl tracking-tight leading-none"><!-- <mat-icon svgIcon="heroicons_solid:tag" style="color: orange !important;"></mat-icon> --><mat-icon class="text-primary"> local_offer</mat-icon></div>
+                  <br>
+                  <div class="text-lg font-medium text-primary">Prices</div>
+                  <div class="flex items-baseline justify-center w-full mt-5 text-secondary">
+                  </div>
+              </div>
+              </div>
+              <div class="flex flex-col flex-auto p-6 bg-card border shadow rounded-2xl overflow-hidden">
+                <div class="flex flex-col items-center mt-2">
+                    <div class="text-7xl sm:text-8xl font-bold tracking-tight leading-none text-primary"><!-- <mat-icon svgIcon="heroicons_solid:cash" style="color: orange !important;"></mat-icon> --><mat-icon> money</mat-icon></div>
+                    <br>
+                    <div style= "cursor:pointer;" class="text-lg font-medium text-primary">Promotions</div>
+                    <div class="flex items-baseline justify-center w-full mt-5 text-secondary">
+                    </div>
+                </div>
+              </div>
+              <div class="flex flex-col flex-auto p-6 bg-card border shadow rounded-2xl overflow-hidden">
+                <div class="flex flex-col items-center mt-2">
+                    <div class="text-7xl sm:text-8xl font-bold tracking-tight leading-none text-primary"><!-- <mat-icon svgIcon="heroicons_solid:speakerphone" style="color: orange !important;"></mat-icon> --><mat-icon>record_voice_over</mat-icon></div>
+                    <br>
+                    <div class="text-lg font-medium text-primary">Marketing Channel</div>
+                    <div class="flex items-baseline justify-center w-full mt-5 text-secondary">
+                    </div>
+                </div>
+              </div>  
+            </div>
+    
+          <div class="Types">
+           <div class="Heading font-semibold pl-0.5 pb-2 pt-4 text-primary">Type</div> 
+          </div>
+    
+          <mat-tab-group class="Asish" [selectedIndex]="2">
+            <mat-tab label="Optimizer" class="text-xs text-primary"></mat-tab>
+            <mat-tab label="Planner" class="text-xs text-primary"></mat-tab>
+          </mat-tab-group>
+          
+          <div class="flex flex-row">
+          <div class="flex flex-col col-md-3 pr-12 pl-1">
+            <span class="pr-3 text-primary"> Start Date
+                <span class="ml-1 text-danger">*</span>
+            </span>
+            <mat-form-field appearance="fill" class="start_date">
+                <input readonly autocomplete="off" [min]="minDate" [max]="maxDate" matInput
+                    [matDatepicker]="picker" [(ngModel)]="pickthedate" (dateChange)="updateCreateScenarioConfig()">
+                <mat-datepicker-toggle matSuffix [for]="picker" class="text-primary">
+                </mat-datepicker-toggle>
+                <mat-datepicker #picker class="text-black"></mat-datepicker>
+            </mat-form-field>
+          </div>
+    
+          <div class="flex flex-col col-md-3">
+            <span class="pr-3 text-primary">Discount Duration
+                <span class="ml-1 text-danger">*</span>
+            </span>
+            <!-- <angular2-multiselect class="form-control" formControlName="discount_duration"
+                [settings]="weekDropdownSettings" [data]="weeklist" (onSelect)="updateCreateScenarioConfig()">
+            </angular2-multiselect> -->
+    
+              <mat-form-field appearance="fill" class="start_date talib-mat-no-subscript w-full sm:w-40 text-primary">
+                <!-- <mat-label class="text-base">Discount Duration*</mat-label> -->
+                <mat-select [(ngModel)]="discount_duration_value" name="week" class="text-primary">
+                  <mat-option *ngFor="let week of weeklist" [value]="week.offer_duration_id" class="text-primary">
+                    {{week.description}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <!-- <p> Selected weeks: {{discount_duration_value}} </p> -->
+        </div>
+      </div>
+    
+    
+          </mat-card-content>
+        </div>
+    
+    
+    
+        <div *ngIf="pagenumber == 2">
+          <mat-card-title class="text-base pb-2">
+            <div class="font-semibold text-primary" style="display:inline"> Discount Channel </div>
+            <div class="text-sm text-stone-400" style="float: right;"> Step {{pagenumber}} of {{max_page_number}} </div>
+          </mat-card-title>
+    
+          <!-- <search [appearance]="'basic'"></search> -->
+          <app-findcheckbox (searchTextChanged)="onSearchTextEntered($event)"></app-findcheckbox>
+          <!-- <form action="" class="flex flex-row"> -->
+            <mat-card-content class="flex flex-row" [style.overflow]="'auto'" [style.height.px]="'400'">
+            <div class="flex flex-col text-primary">
+              <div *ngFor="let item of checkboxlist1; let index = index">
+                <div *ngIf="searchText === '' ||  item.promo_name.toLowerCase().includes(searchText.toLowerCase())">
+                <mat-checkbox
+                  [checked]="selectedindex === index"
+                  (change)="boxhandler(index)"
+                  class="mb-3 pl-3 text-sm"
+                  [disabled]="disabled && selectedindex != index"
+                  [color]="'accent'"
+                >
+                  {{ item.promo_name }}
+                </mat-checkbox>
+                </div>
+              </div>
+              <br />
+              <br />
+            </div>
+          </mat-card-content>
+          <!-- </form> -->
+        </div>
+    
+        <div *ngIf="pagenumber == 3">
+          <mat-card-title class="text-base pb-2">
+            <div class="font-semibold text-primary" style="display:inline"> Segment </div>
+            <div class="text-sm text-stone-400" style="float: right;"> Step {{pagenumber}} of {{max_page_number}} </div>
+          </mat-card-title>
+    
+          <!-- <search [appearance]="'basic'"></search> -->
+          <app-findcheckbox (searchTextChanged)="onSearchTextEntered($event)"></app-findcheckbox>
+          <!-- <form action="" class="flex flex-row"> -->
+            <mat-card-content class="flex flex-row" [style.overflow]="'auto'" [style.height.px]="'400'">
+            <div class="flex flex-col text-primary">
+              <div *ngFor="let item of segment_data; let index = index">
+                <div *ngIf="item.promo_id === promo_id && (searchText === '' ||  item.segment_name.toLowerCase().includes(searchText.toLowerCase()))">
+                <mat-checkbox
+                  [checked]="selectedindextab2 === index"
+                  (change)="boxhandlertab2(index)"
+                  class="mb-3 pl-3 text-sm"
+                  [disabled]="disabledtab2 && selectedindextab2 != index"
+                  [color]="'accent'"
+                >
+                  {{ item.segment_name }}
+                </mat-checkbox>
+              </div>
+              </div>
+              <br />
+              <br />
+            </div>
+          </mat-card-content>
+          <!-- </form> -->
+        </div>
+    
+        <div *ngIf="pagenumber == 4">
+          <mat-card-title class="text-base pb-2">
+            <div class="font-semibold text-primary" style="display:inline"> Discount Mechanic </div>
+            <div class="text-sm text-stone-400" style="float: right;"> Step {{pagenumber}} of {{max_page_number}} </div>
+          </mat-card-title>
+    
+          <!-- <search [appearance]="'basic'"></search> -->
+          <app-findcheckbox (searchTextChanged)="onSearchTextEntered($event)"></app-findcheckbox>
+          <!-- <form action="" class="flex flex-row"> -->
+            <mat-card-content class="flex flex-row" [style.overflow]="'auto'" [style.height.px]="'400'">
+            <div class="flex flex-col text-primary">
+              <div *ngFor="let item of checkboxlisttab2; let index = index">
+                <div *ngIf="searchText === '' ||  item.promomech_name.toLowerCase().includes(searchText.toLowerCase())">
+                <mat-checkbox
+                  [checked]="selectedindextab3 === index"
+                  (change)="boxhandlertab3(index)"
+                  class="mb-3 pl-3 text-sm"
+                  [disabled]="disabledtab3 && selectedindextab3 != index"
+                  [color]="'accent'"
+                >
+                  {{ item.promomech_name }}
+                </mat-checkbox>
+                </div>
+              </div>
+              <br />
+              <br />
+            </div>
+          </mat-card-content>
+          <!-- </form> -->
+        </div>
+    
+        <div *ngIf="pagenumber == 5">
+          <mat-card-title class="text-base pb-2">
+            <div class="font-semibold text-primary" style="display:inline"> Product Type </div>
+            <div class="text-sm text-stone-400" style="float: right;"> Step {{pagenumber}} of {{max_page_number}} </div>
+          </mat-card-title>
+    
+          <!-- <search [appearance]="'basic'"></search> -->
+          <app-findcheckbox (searchTextChanged)="onSearchTextEntered($event)"></app-findcheckbox>
+          <!-- <form action="" class="flex flex-row"> -->
+            <mat-card-content class="flex flex-row" [style.overflow]="'auto'" [style.height.px]="'400'">
+            <div class="flex flex-col text-primary">
+              <div *ngFor="let item of product_type_data; let index = index">
+                <div *ngIf="searchText === '' ||  item.promo_type_name.toLowerCase().includes(searchText.toLowerCase())">
+                <mat-checkbox
+                  [checked]="selectedindextab4 === index"
+                  (change)="boxhandlertab4(index)"
+                  class="mb-3 pl-3 text-sm"
+                  [disabled]="disabledtab4 && selectedindextab4 != index"
+                  [color]="'accent'"
+                >
+                  {{ item.promo_type_name }}
+                </mat-checkbox>
+                </div>
+              </div>
+              <br />
+              <br />
+            </div>
+          </mat-card-content>
+          <!-- </form> -->
+        </div>
+    
+        <div *ngIf="pagenumber == 6">
+          <mat-card-title class="text-base pb-2">
+            <div class="font-semibold text-primary" style="display:inline"> Items </div>
+            <div class="text-sm text-stone-400" style="float: right;"> Step {{pagenumber}} of {{max_page_number}} </div>
+          </mat-card-title>
+    
+          <!-- <search [appearance]="'basic'"></search> -->
+          <app-findcheckbox (searchTextChanged)="onSearchTextEntered($event)"></app-findcheckbox>
+          <!-- <form action="" class="flex flex-row"> -->
+            <mat-card-content class="flex flex-row" [style.overflow]="'auto'" [style.height.px]="'400'">
+            <div class="flex flex-col text-primary">
+              <div *ngFor="let item of item_data; let index = index">
+                <div *ngIf="searchText === '' ||  item.item_name.toLowerCase().includes(searchText.toLowerCase())">
+                <mat-checkbox
+                  [checked]="selectedindextab5 === index"
+                  (change)="boxhandlertab5(index)"
+                  class="mb-3 pl-3 text-sm"
+                  [disabled]="disabledtab5 && selectedindextab5 != index"
+                  [color]="'accent'"
+                >
+                  {{ item.item_name }}
+                </mat-checkbox>
+                </div>
+              </div>
+              <br />
+              <br />
+            </div>
+          </mat-card-content>
+          <!-- </form> -->
+        </div>
+    
+        <mat-divider inset></mat-divider>
+        <mat-card-actions>
+          <button mat-button class="left" [disabled]="pagenumber===min_page_number" (click)="changepage(-1)">
+            &lt;&nbsp;Previous
+          </button>
+          <button mat-button class="right" [disabled]="pagenumber===max_page_number" (click)="changepage(1)">
+            Next&nbsp;&gt;
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+    
+    <div class="second mt-4" style="float: right">
+      <mat-card class="second-card text-stone-400 bg-white">
+        <!-- <mat-card-header> -->
+          <input type="text" class="test px-3 py-3 w-full font-medium rounded" placeholder="Type scenario name" [(ngModel)]="scenarioName">
+          <!-- <mat-card-title class="test pb-3"
+            >Test Scenario with co-investment depth of OTC bars
+            <br />
+          </mat-card-title> -->
+        <!-- </mat-card-header> -->
+        <br />
+        <div class="inside pb-4">
+          <h4 class="font-medium">Simulator Selections</h4>
+          <h5 class="font-normal">
+            Module&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;Promotions
+            <br />
+            Type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
+            &nbsp;&nbsp;Planner
+          </h5>
+        </div>
+    
+        <!-- <talib-alert
+        [appearance]="'soft'"
+        [dismissible]="true"
+        [dismissed]="true"
+        [name]="'alertBox1'"
+        [type]="'warn'"
+        [showIcon]="false">
+          <span talibAlertTitle class="text-base">Alert !!
+          </span>
+          <span class="text-sm">*Discount depth should be between 10% to 50%</span>
+        </talib-alert> -->
+    
+       <!--  <talib-alert 
+        [appearance]="'soft'"
+        [dismissible]="true"
+        [dismissed]="true"
+        [name]="'alertBox2'"
+        [type]="'warn'"
+        [showIcon]="false">
+          <span talibAlertTitle class="text-base">Alert !!
+          </span>
+          <span class="text-sm">*Discount price can't be lower than the Min. Discount Price!</span>
+        </talib-alert> -->
+    
+    
+        <div class="inside pt-6">
+          <h4 class="font-medium">Primary Selections</h4>
+          <h5 class="font-normal">
+            Discount Channel&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;
+            {{ selectedvalue }}
+            <br />
+            Segment&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;{{ selectedvaluetab2 }}
+            <br />
+            Discount
+            Mechanic&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
+            &nbsp;&nbsp;{{ selectedvaluetab3 }}
+            <br />
+            Product
+            Type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
+            &nbsp;&nbsp;{{ selectedvaluetab4 }}
+            <br />
+            Items&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
+            &nbsp;&nbsp;{{ selectedvaluetab5 }}
+            <br />
+            Regular
+            Price($)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
+            &nbsp;&nbsp;{{ regular_price }}
+            <br />
+            Min. Discount
+            Price($)&nbsp;:
+            &nbsp;&nbsp;{{ min_disc_price }}
+            <br />
+            Discount
+            Price($)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
+            &nbsp;&nbsp;{{DiscountPrice}}
+            <br />
+            Discount
+            Depth(%)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
+            &nbsp;&nbsp;<span><input type="number" [(ngModel)]="DiscountDepth" (input)="DiscountCalculation()" placeholder="%"></span>
+            <br />
+            <br />
+            <br />
+            <br />
+          </h5>
+        </div>
+      </mat-card>
+      <div class="pl-8">
+        <button (click)="test()" class="stylings talib-mat-button-large mt-6 bg-orange-400 text-white py-2 px-12 rounded" [disabled]="pagenumber!=max_page_number">
+          <span> Create Discount </span>
+        </button>
+        <button
+          class="talib-mat-button-large mt-6 colorstyle bg-white text-stone-500 py-2 px-12 rounded" (click)="cancel()" [disabled]="pagenumber===min_page_number">
+          <span> Cancel </span>
+        </button>
+      </div>
+    
+      <!-- <button
+        class="talib-mat-button-large w-mid mt-6"
+        mat-flat-button
+        [color]="'accent'"
+      >
+        <span> Cancel </span>
+      </button> -->
+    </div>
+    </div>
+    
+    
+    <div *ngIf="togglenumber == 2">
+    
+      <br />
+      <span class="heading class-black">{{scenarioName}}</span>
+      <span class="back" (click)="back()" style="float:right;  font-size: 20px; padding-right: 5%;">&#10006;</span>
+      <br />
+    
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 ml-18 mt-10">
+    
+        <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+      
+        <!-- Position Column -->
+        <ng-container matColumnDef="position">
+          <th mat-header-cell *matHeaderCellDef> Discount Channel </th>
+          <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+        </ng-container>
+      
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> Segment </th>
+          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+      
+        <!-- Weight Column -->
+        <ng-container matColumnDef="weight">
+          <th mat-header-cell *matHeaderCellDef> Mechanic </th>
+          <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+        </ng-container>
+      
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="symbol">
+          <th mat-header-cell *matHeaderCellDef> Product Type </th>
+          <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="showitem">
+          <th mat-header-cell *matHeaderCellDef> Item </th>
+          <td mat-cell *matCellDef="let element"> {{element.showitem}} </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="showdiscountprice">
+          <th mat-header-cell *matHeaderCellDef> Discount Price </th>
+          <td mat-cell *matCellDef="let element"> {{element.showdiscountprice}} </td>
+        </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    
+    
+      <div class="ml-28">
+        <button (click)="test1()" class="stylings talib-mat-button-large mt-6 bg-orange-400 text-white py-2 px-12 rounded" style="
+        margin-left: 270px; margin-right: 25px;">
+          <span> Add Discount </span>
+        </button>
+    
+        <button (click)="submit()" class="stylings talib-mat-button-large mt-6 bg-orange-400 text-white py-2 px-12 rounded">
+          <span> Create Scenario </span>
+        </button>
+    
+        <button
+          class="talib-mat-button-large mt-6 colorstyle bg-white text-stone-500 py-2 px-12 rounded" (click)="cancel()">
+          <span> Cancel </span>
+        </button>
+      </div>
+    
+    
+    
+    
+    </div>

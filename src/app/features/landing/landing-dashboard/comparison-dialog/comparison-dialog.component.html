@@ -1,0 +1,28 @@
+<div class="">
+
+    <!--     <talib-card class="flex flex-col px-4 py-6 pb-4 my-4" #talibCard> -->
+        <mat-card class="flex flex-col px-4 py-6 pb-4 my-4 bg-white" #talibCard>
+            <mat-checkbox class="mb-3 text-sm text-black" 
+            [value]="item.offer_config_id"
+            (change)="boxhandler()">
+                <div class="text-lg font-bold">{{item.offer_package_name}}</div>
+    
+                <div class="flex flex-col">
+                <div class="flex flex-col text-xs text-stone-400 mt-4">Offer Duration</div>
+                <div class="flex flex-col text-black">
+                    <!-- {{item.scenario_offer_data[0].segment_name}} -->
+                    {{item.offer_duration}}
+                </div>
+    
+                <div class="flex flex-col text-xs text-stone-400 mt-4">Start Date</div>
+                <div class="flex flex-col text-black">
+                    <!-- {{item.scenario_offer_data[0].dicount_mechanic.promomech_name}} -->
+                    {{item.start_date}}
+                </div>
+                </div> 
+            </mat-checkbox>
+        </mat-card>
+            
+        <!-- </talib-card> -->
+    
+    </div>

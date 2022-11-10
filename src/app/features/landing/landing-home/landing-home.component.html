@@ -1,0 +1,545 @@
+<div
+  class="flex flex-col w-full h-full flex-col-gap-10"
+  style="background: white"
+>
+  <br />
+  <div>
+    <span (click)="back()" style="cursor: pointer" class="heading"
+      >&lt; Scenario Comparison</span
+    >
+    <div
+      class="flex justify-end ml-6"
+      style="padding: 10px; display: inline !important; float: right"
+    >
+      <button class="hidden sm:inline-flex ml-3">
+        <!-- <label
+          ><input type="checkbox" value="" />&nbsp;Hide Same Values&nbsp;
+          &nbsp;</label
+        > -->
+        <mat-icon
+          class="icon-size-4"
+          mat-flat-button
+          [color]="'primary'"
+        > insert_drive_file</mat-icon>
+        <span class="icons ml-2" style="color: primary">Export</span>
+        <!-- <a routerLink="/planner"><span class="icons ml-2" style="color: 'orange'">Export</span></a> -->
+      </button>
+    </div>
+  </div>
+  <br />
+
+  <!-- Filters -->
+  <div class="Hello flex flex-col sm:flex-row items-center w-full max-w-xs sm:max-w-none text-primary">
+    <mat-label></mat-label>
+
+    <mat-form-field class="SUV1 talib-mat-no-subscript w-full sm:w-52 mr-18 mb-2">
+      <mat-select
+        class="take"
+        [(value)]="defaultMetricCode"
+        (selectionChange)="filterByCategory($event, 3)"
+      >
+        <ng-container *ngFor="let filterval of FilterValues" class="text-primary">
+          <mat-option
+            class="not-empty-select text-primary"
+            [value]="filterval.offer_config_id"
+            >{{ filterval.offer_package_name }}</mat-option
+          >
+        </ng-container>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="SUV talib-mat-no-subscript w-full sm:w-52 mr-18 mb-2">
+      <mat-select
+        class="take"
+        [(value)]="defaultMetricCodetb2"
+        (selectionChange)="filterByCategory($event, 4)"
+      >
+        <!-- <mat-option [value]="'all'">Lenta</mat-option> -->
+        <ng-container *ngFor="let filterval of FilterValues; trackBy: trackByFn" class="text-primary">
+          <mat-option [value]="filterval.offer_config_id">{{
+            filterval.offer_package_name
+          }}</mat-option>
+        </ng-container>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="SUV talib-mat-no-subscript w-full sm:w-52 mb-2">
+      <mat-select
+        class="take"
+        [(value)]="defaultMetricCodetb3"
+        (selectionChange)="filterByCategory($event, 5)"
+      >
+        <!-- <mat-option [value]="'all'">Price Rise Scenario</mat-option> -->
+        <ng-container *ngFor="let filterval of FilterValues; trackBy: trackByFn" class="text-primary">
+          <mat-option [value]="filterval.offer_config_id">{{
+            filterval.offer_package_name
+          }}</mat-option>
+        </ng-container>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <hr>
+  <br>
+  <div class="flex flex-col items-center justify-top">
+    <div class="w-full max-w-7xl">
+      <div style="padding-bottom: 10px; padding-left: 4%; padding-right: 4%">
+        <mat-accordion class="max-w-4xl mt-12">
+          <ng-container>
+            <mat-expansion-panel class="Mat-change" [expanded]="true">
+              <mat-expansion-panel-header
+                class="Mat-check bg-gray-200"
+                [collapsedHeight]="'52px'"
+                [expandedHeight]="'52px'"
+              >
+                <mat-panel-title class="text-gray-500"> Details </mat-panel-title>
+              </mat-expansion-panel-header>
+
+              <!-- <mat-table
+                [dataSource]="dataSource"
+                class="mat-elevation-z8"
+              >
+                <ng-container matColumnDef="col1" class="jj1">
+                  <mat-header-cell class="jj1" *matHeaderCellDef></mat-header-cell>
+                  <mat-cell class="jj1" *matCellDef="let element" [ngClass]="'heights'">
+                    {{ element.col1 }}
+                  </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="col2" class="jj1">
+                  <mat-header-cell class="jj1" *matHeaderCellDef></mat-header-cell>
+                  <mat-cell class="jj1" *matCellDef="let element" [ngClass]="'heights'">
+                    {{ element.col2 }}
+                  </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="col3" class="jj1">
+                  <mat-header-cell class="jj1" *matHeaderCellDef></mat-header-cell>
+                  <mat-cell class="jj1" *matCellDef="let element" [ngClass]="'heights'">
+                    {{ element.col3 }}
+                  </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="col4" class="jj1">
+                  <mat-header-cell class="jj1" *matHeaderCellDef></mat-header-cell>
+                  <mat-cell class="jj1" *matCellDef="let element" [ngClass]="'heights'">
+                    {{ element.col4 }}
+                  </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="col5" class="jj1">
+                  <mat-header-cell class="jj1" *matHeaderCellDef></mat-header-cell>
+                  <mat-cell class="jj1" *matCellDef="let element" [ngClass]="'heights'">
+                    {{ element.col5 }}
+                  </mat-cell>
+                </ng-container>
+
+                <mat-row
+                  *matRowDef="let row; columns: displayedColumns"
+                ></mat-row>
+              </mat-table> -->
+
+
+
+              <table
+                mat-table
+                [dataSource]="dataSource"
+                class="mat-elevation-z8 bg-gray-500"
+              >
+
+                <ng-container matColumnDef="col1">
+                  <th mat-header-cell *matHeaderCellDef></th>
+                  <td mat-cell class="adjust-col1-t1" *matCellDef="let element" [ngClass]="'heights'">
+                    {{ element.col1 }}
+                  </td>
+                </ng-container>
+
+                <ng-container matColumnDef="col2" class="jj1">
+                  <th mat-header-cell class="jj1" *matHeaderCellDef></th>
+                  <td mat-cell class="jj1 adjust-col2-t1" *matCellDef="let element" [ngClass]="'heights'">
+                    {{ element.col2 }}
+                  </td>
+                </ng-container>
+
+                <ng-container matColumnDef="col3" class="jj1">
+                  <th mat-header-cell class="jj1" *matHeaderCellDef></th>
+                  <td mat-cell class="jj1 adjust-col3-t1 pl-30" *matCellDef="let element" [ngClass]="'heights'">
+                    {{ element.col3 }}
+                  </td>
+                </ng-container>
+
+                <ng-container matColumnDef="col4" class="jj1">
+                  <th mat-header-cell class="jj1" *matHeaderCellDef></th>
+                  <td mat-cell class="jj1 adjust-col4-t1 pl-30" *matCellDef="let element" [ngClass]="'heights'">
+                    {{ element.col4 }}
+                  </td>
+                </ng-container>
+
+                <ng-container matColumnDef="col5" class="jj1">
+                  <th mat-header-cell class="jj1" *matHeaderCellDef></th>
+                  <td mat-cell class="jj1 adjust-col5-t1 pl-30" *matCellDef="let element" [ngClass]="'heights'">
+                    {{ element.col5 }}
+                  </td>
+                </ng-container>
+
+
+
+                <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+              </table>
+
+
+
+
+
+
+
+            </mat-expansion-panel>
+          </ng-container>
+        </mat-accordion>
+      </div>
+
+      <div style="padding-bottom: 10px; padding-left: 4%; padding-right: 4%">
+        <mat-accordion class="max-w-4xl mt-12">
+          <ng-container>
+            <mat-expansion-panel [expanded]="true">
+              <mat-expansion-panel-header
+                [collapsedHeight]="'52px'"
+                [expandedHeight]="'52px'"
+                class="bg-gray-200"
+              >
+                <mat-panel-title class="text-gray-500">Metrics</mat-panel-title>
+              </mat-expansion-panel-header>
+              <div class="djf bg-gray-500">
+                <div style="float:right" class="">
+                <mat-button-toggle-group class="ml-3"  #group="matButtonToggleGroup">
+                  <mat-button-toggle checked class="text-sm w-15 h-12 bg-gray-500" value="left" aria-label="Text align left">
+                    #
+                  </mat-button-toggle>
+                  <mat-button-toggle class="text-sm w-15 h-12 bg-gray-500" value="center" aria-label="Text align center">
+                    %
+                  </mat-button-toggle>
+                </mat-button-toggle-group>
+              </div>
+                <br>
+                <mat-tab-group class="tab-check p-0 bg-gray-500" [selectedIndex]="1">
+                  <mat-tab label="View by: "></mat-tab>
+                  <mat-tab label="Scenario Values">
+                    <div class="mat-elevation-z8">
+                      <hr>
+                      <table
+                        mat-table
+                        [dataSource]="dataSource3"
+                        class="bg-gray-500"
+                      >
+
+                        <ng-container matColumnDef="col1">
+                          <th class="jj adjust-col1-t2" mat-header-cell *matHeaderCellDef>
+                            Sales Metrics
+                          </th>
+                          <td class="jj adjust-col1-t2" mat-cell *matCellDef="let element">
+                            {{ element.col1 }}
+                          </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="col2">
+                          <th class="jj adjust-col2-t2 pl-10" mat-header-cell *matHeaderCellDef>
+                            Base Value
+                          </th>
+                          <td class="jj adjust-col2-t2 pl-12" mat-cell *matCellDef="let element">
+                            {{ element.col2 }}
+                          </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="col3">
+                          <th class="jj adjust-col3-t2 pl-18" mat-header-cell *matHeaderCellDef>
+                            Simulated Value
+                          </th>
+                          <td class="jj adjust-col3-t2 pl-12" mat-cell *matCellDef="let element">
+                            <div class="flex flex-row items-center">
+                            {{ element.col3[0] }} &nbsp;
+                            <span class="text-sm" [ngClass]="{'text-green-500': element.col3[1][0] !== '-', 'text-red-500': element.col3[1][0] === '-'}">
+                              ({{element.col3[1]}})
+                            </span>
+                            <!-- <span *ngIf="element.col3[2][0] !== '-'" class="text-green-500">
+                            ({{element.col3[2]}})</span>
+                            <span *ngIf="element.col3[2][0] === '-'" class="text-red-500">
+                              ({{element.col3[2]}})</span> -->
+
+                              <mat-icon  class="icon-size-3.5" [ngClass]="{'text-green-500': element.col5[1][0] !== '-', 'text-red-500': element.col5[1][0] === '-'}"
+                              *ngIf="element.col5[1][0] !== '-'">arrow_upward
+                              </mat-icon>
+                              <mat-icon  class="icon-size-3.5" [ngClass]="{'text-green-500': element.col5[1][0] !== '-', 'text-red-500': element.col5[1][0] === '-'}"
+                              *ngIf="element.col5[1][0] === '-'">arrow_downward
+                              </mat-icon>
+
+                            <div id="chart">
+                            <apx-chart
+                            class="flex flex-auto items-center h-7 ml-2 overflow-hidden"
+                            [chart]="element.col3[2].chart"
+                            [colors]="element.col3[2].colors"
+                            [series]="element.col3[2].series"
+                            [stroke]="element.col3[2].stroke"
+                            [tooltip]="element.col3[2].tooltip"
+                            [xaxis]="element.col3[2].xaxis"
+                            [dataLabels]="element.col3[2].dataLabels"
+                            [markers]="element.col3[2].markers"
+                            >
+                            </apx-chart>
+                            </div>
+                          </div>
+                          </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="col4">
+                          <th class="jj adjust-col4-t2 pl-18" mat-header-cell *matHeaderCellDef>
+                            Simulated Value
+                          </th>
+                          <td class="jj adjust-col4-t2 pl-12" mat-cell *matCellDef="let element">
+                            <div class="flex flex-row items-center">
+                              {{ element.col4[0] }} &nbsp;
+                              <span class="text-sm" [ngClass]="{'text-green-500': element.col4[1][0] !== '-', 'text-red-500': element.col4[1][0] === '-'}">
+                              ({{element.col4[1]}})
+                              </span>
+
+                              <mat-icon  class="icon-size-3.5" [ngClass]="{'text-green-500': element.col5[1][0] !== '-', 'text-red-500': element.col5[1][0] === '-'}"
+                              *ngIf="element.col5[1][0] !== '-'">arrow_upward
+                              </mat-icon>
+                              <mat-icon  class="icon-size-3.5" [ngClass]="{'text-green-500': element.col5[1][0] !== '-', 'text-red-500': element.col5[1][0] === '-'}"
+                              *ngIf="element.col5[1][0] === '-'">arrow_downward
+                              </mat-icon>
+
+                            <div id="chart">
+                            <apx-chart
+                            class="flex flex-auto items-center h-7 ml-2 overflow-hidden"
+                            [chart]="element.col4[2].chart"
+                            [colors]="element.col4[2].colors"
+                            [series]="element.col4[2].series"
+                            [stroke]="element.col4[2].stroke"
+                            [tooltip]="element.col4[2].tooltip"
+                            [xaxis]="element.col4[2].xaxis"
+                            [dataLabels]="element.col4[2].dataLabels"
+                            [markers]="element.col4[2].markers"
+                            >
+                            </apx-chart>
+                            </div>
+                          </div>
+                          </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="col5">
+                          <th class="jj pr-0 pl-18 adjust-col5-t2" mat-header-cell *matHeaderCellDef>
+                            Simulated Value
+
+                                                
+                      
+                      <!-- <mat-button-toggle-group class="ml-3"  #group="matButtonToggleGroup">
+                        <mat-button-toggle checked class="text-sm w-15 h-12" value="left" aria-label="Text align left">
+                          #
+                        </mat-button-toggle>
+                        <mat-button-toggle class="text-sm w-15 h-12" value="center" aria-label="Text align center">
+                          %
+                        </mat-button-toggle>
+                      </mat-button-toggle-group> -->
+
+                          </th>
+                          <td class="jj pl-12 adjust-col5-t2" mat-cell *matCellDef="let element">
+                            <div class="flex flex-row items-center">
+                              {{ element.col5[0] }} &nbsp;
+                              <span class="text-sm" [ngClass]="{'text-green-500': element.col5[1][0] !== '-', 'text-red-500': element.col5[1][0] === '-'}">
+                                ({{element.col5[1]}})
+                              </span>
+
+                              <mat-icon  class="icon-size-3.5" [ngClass]="{'text-green-500': element.col5[1][0] !== '-', 'text-red-500': element.col5[1][0] === '-'}"
+                              *ngIf="element.col5[1][0] !== '-'">arrow_upward
+                              </mat-icon>
+                              <mat-icon  class="icon-size-3.5" [ngClass]="{'text-green-500': element.col5[1][0] !== '-', 'text-red-500': element.col5[1][0] === '-'}"
+                              *ngIf="element.col5[1][0] === '-'">arrow_downward
+                              </mat-icon>
+
+                            <div id="chart">
+                            <apx-chart
+                            class="flex flex-auto items-center h-7 ml-2 overflow-hidden"
+                            [chart]="element.col5[2].chart"
+                            [colors]="element.col5[2].colors"
+                            [series]="element.col5[2].series"
+                            [stroke]="element.col5[2].stroke"
+                            [tooltip]="element.col5[2].tooltip"
+                            [xaxis]="element.col5[2].xaxis"
+                            [dataLabels]="element.col5[2].dataLabels"
+                            [markers]="element.col5[2].markers"
+                            >
+                            </apx-chart>
+                            </div>
+                          </div>
+                          </td>
+                        </ng-container>
+
+                        <tr
+                          mat-header-row
+                          *matHeaderRowDef="displayedColumns3"
+                        ></tr>
+                        <tr
+                          mat-row
+                          *matRowDef="let row; columns: displayedColumns3"
+                        ></tr>
+                      </table>
+                    </div>
+                  </mat-tab>
+                  <mat-tab label="Lift">
+                    <div class="mat-elevation-z8">
+                      <hr>
+                      <table
+                        class=""
+                        mat-table
+                        [dataSource]="dataSource4"
+                      >
+
+                        <ng-container matColumnDef="col1">
+                          <th class="jj cellval" mat-header-cell *matHeaderCellDef>
+                            Sales Metrics
+                          </th>
+                          <td class="jj cellval" mat-cell *matCellDef="let element">
+                            {{ element.col1 }}
+                          </td>
+                        </ng-container>
+
+
+                        <ng-container matColumnDef="col2">
+                          <th class="jj" mat-header-cell *matHeaderCellDef>
+                            Base Value &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                          </th>
+                          <td class="jj" mat-cell *matCellDef="let element">
+                            {{ element.col2 }}
+                          </td>
+                        </ng-container>
+
+
+                        <ng-container matColumnDef="col3">
+                          <th class="jj" mat-header-cell *matHeaderCellDef>
+                            Simulated Value
+                          </th>
+                          <td class="jj" mat-cell *matCellDef="let element">
+                            {{ element.col3 }}
+                          </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="col4">
+                          <th class="jj" mat-header-cell *matHeaderCellDef>
+                            Simulated Value
+                          </th>
+                          <td class="jj" mat-cell *matCellDef="let element">
+                            {{ element.col4 }}
+                          </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="col5">
+                          <th class="jj" mat-header-cell *matHeaderCellDef>
+                            Simulated Value
+                          </th>
+                          <td class="jj" mat-cell *matCellDef="let element">
+                            {{ element.col5 }}
+                          </td>
+                        </ng-container>
+
+                        <tr
+                          mat-header-row
+                          *matHeaderRowDef="displayedColumns3"
+                        ></tr>
+                        <tr
+                          mat-row
+                          *matRowDef="let row; columns: displayedColumns3"
+                        ></tr>
+                      </table>
+                    </div>
+                  </mat-tab>
+                </mat-tab-group>
+              </div>
+            </mat-expansion-panel>
+          </ng-container>
+        </mat-accordion>
+      </div>
+
+      <!-- <div style="padding-bottom: 10px;">
+                <mat-accordion class="max-w-4xl mt-12">
+                    <ng-container>
+                        <mat-expansion-panel>
+                            <mat-expansion-panel-header [collapsedHeight]="'52px'" class="bg-gray-200">
+                                <mat-panel-title>Metrics</mat-panel-title>
+                            </mat-expansion-panel-header>
+
+                            <table mat-table *ngIf="tabledata.length>0" [dataSource]="tabledata" class="mat-elevation-z8" >
+                                
+                                <ng-container matColumnDef="Content">
+                                  <th mat-header-cell *matHeaderCellDef> Content </th>
+                                  <td mat-cell *matCellDef="let element"> {{element.Content}} </td>
+                                </ng-container>
+                              
+
+                                <ng-container matColumnDef="Value">
+                                  <th mat-header-cell *matHeaderCellDef> Value </th>
+                                  <td mat-cell *matCellDef="let element"> {{element.Value}} </td>
+                                </ng-container>
+                              
+
+                                <ng-container matColumnDef="Scenario value">
+                                  <th mat-header-cell *matHeaderCellDef> Scenario value </th>
+                                  <td mat-cell *matCellDef="let element"> {{element["Scenario value"]}} </td>
+                                </ng-container>
+                              
+
+                                <ng-container matColumnDef="Lift">
+                                  <th mat-header-cell *matHeaderCellDef> Lift </th>
+                                  <td mat-cell *matCellDef="let element"> {{element.Lift}} </td>
+                                </ng-container>
+                              
+                                <tr mat-header-row *matHeaderRowDef="columns"></tr>
+                                <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+                              </table>
+
+
+
+                        </mat-expansion-panel>
+                    </ng-container>
+                </mat-accordion>
+            </div> -->
+
+      <!-- <div style="padding-left: 4%; padding-right: 4%">
+        <mat-accordion class="max-w-4xl mt-12">
+          <ng-container>
+            <mat-expansion-panel class="Mat-change">
+              <mat-expansion-panel-header
+                [collapsedHeight]="'52px'"
+                [expandedHeight]="'52px'"
+                class="bg-gray-200"
+              >
+                <mat-panel-title>Promotion Plans</mat-panel-title>
+              </mat-expansion-panel-header>
+
+              <table
+                mat-table
+                *ngIf="reportstable.length > 0"
+                [dataSource]="reportstable"
+                class="mat-elevation-z8 bg-gray-50"
+              >
+                <ng-container matColumnDef="Title">
+                  <th mat-header-cell *matHeaderCellDef>Title</th>
+                  <td mat-cell *matCellDef="let element">
+                    {{ element.Title }}
+                  </td>
+                </ng-container>
+
+                <ng-container matColumnDef="Value">
+                  <th mat-header-cell *matHeaderCellDef class="pl-14">Value</th>
+                  <td mat-cell *matCellDef="let element" class="pl-12">
+                    {{ element.Value }}
+                  </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="reportscolumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: reportscolumns"></tr>
+              </table>
+            </mat-expansion-panel>
+          </ng-container>
+        </mat-accordion>
+      </div> -->
+    </div>
+  </div>
+</div>

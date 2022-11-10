@@ -1,0 +1,111 @@
+.heading {
+    display: inline;
+    /* padding: 5px;
+    padding-top: 15px !important;
+    padding-left: 15px; */
+    padding: 4%;
+    padding-left: 5%;
+    font-size: 18px;
+  }
+  
+  .first {
+    width: 65%;
+    height: 100% !important;
+    padding-left: 5%;
+    padding-right: 2%;
+  }
+  
+  .second {
+    width: 35%;
+    height: 100% !important;
+    padding-right: 5%;
+  }
+  
+  .test {
+    font-size: 15px;
+    border: 2px solid transparent;
+    border-color: gray;
+    //border-bottom-color: orange !important;
+  
+    display: flex;
+    justify-content: center; /* align horizontal */
+    align-items: center;
+  }
+  
+  .inside {
+    padding-left: 4%;
+    font-family: "Poppins", sans-serif !important;
+  }
+  
+  .left {
+    color: orange;
+  }
+  .right {
+    color: orange;
+    display: flex;
+    float: right;
+  }
+  
+  /* ::ng-deep.mat-tab-link,  ::ng-deep.mat-tab-label, ::ng-deep.mat-tab-label-active{
+    min-width: 6px!important;
+  } */
+  
+  ::ng-deep.mat-tab-group.Asish ::ng-deep.mat-tab-header ::ng-deep.mat-tab-label-container ::ng-deep.mat-tab-list ::ng-deep.mat-tab-labels ::ng-deep.mat-tab-label{
+    height: 30px !important;
+    border-radius: 0px !important;
+    color: orange !important;
+  }
+  
+  ::ng-deep.mat-tab-group.Asish ::ng-deep.mat-tab-header ::ng-deep.mat-tab-label-container ::ng-deep.mat-tab-list ::ng-deep.mat-tab-labels ::ng-deep.mat-tab-label.mat-tab-label-active{
+    color: orange !important;
+    border-top-right-radius: 10px !important;
+    border-bottom-right-radius: 10px !important;
+    background-color: rgb(190, 189, 188)  !important;
+  }
+  
+  /* ::ng-deep .mat-form-field-flex > .mat-form-field-infix { padding: 0.4em 0px !important;}
+  ::ng-deep .mat-form-field-label-wrapper { top: -1.5em; }
+  
+  ::ng-deep .mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
+      transform: translateY(-1.1em) scale(.75);
+      width: 133.33333%;
+  } */
+  
+  .mat-form-field.start_date.mat-form-field-appearance-fill .mat-form-field-wrapper .mat-form-field-flex{
+    display: flex;
+    min-height: 34px !important;
+  }
+  
+  .example-card{
+    box-shadow: 0px 3px 12px #1C1C1C33;
+    border-radius: 9px;
+    opacity: 1;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+  }
+  
+  .back:hover{
+    cursor:pointer;
+  }
+  
+  /* .stylings{
+    background-color: orange
+    ;
+  } */
+  
+  button.stylings[disabled=disabled], button.stylings:disabled {
+    color:rgba(17, 17, 17, 0.534) !important;
+    background-color: rgb(222, 226, 208) !important;
+  }
+  
+  
+  /* .second-card{
+    box-shadow: 0px 0px ;
+  } */
+  
+  table {
+    width: 90%;
+  }
+
+  .text-black{
+    color: black;
+  }

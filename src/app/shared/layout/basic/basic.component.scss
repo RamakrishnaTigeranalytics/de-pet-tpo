@@ -1,0 +1,116 @@
+.navbar-spacer {
+    flex: 1 1 auto;
+  }
+  
+  .navbar {
+    z-index: 2;
+  }
+  
+  .navbar-brand {
+    text-decoration: none;
+    color: white;
+  }
+  
+  .navbar-container {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+  
+  .navbar-is-mobile .navbar {
+    position: fixed;
+    /* Make sure the toolbar will stay on top of the content as it scrolls past. */
+    z-index: 2;
+  }
+  
+  .navbar-sidenav-container {
+    /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This
+             causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */
+    flex: 1;
+  }
+  
+  .navbar-is-mobile .navbar-sidenav-container {
+    /* When the sidenav is fixed, don't constrain the height of the sidenav container. This allows the
+             `<body>` to be our scrolling element for mobile layouts. */
+    flex: 1 0 auto;
+  }
+  
+  /*Set sidenav width*/
+  
+  mat-sidenav {
+    background: #FFFFFF 0% 0% no-repeat padding-box !important;
+    min-width: 180px !important;
+    border-right: 1px solid #eee;
+    box-shadow: 6px 0 6px rgba(0, 0, 0, .1);
+    /* background-color:rgb(63, 81, 181); */
+  }
+  
+  /* Set height of wrapper to stop content from moving up & down */
+  
+  // .progress-bar-container {
+  //   height: 5px;
+  // }
+  
+  a.mat-list-item.active {
+    background: rgba(0, 0, 0, .04);
+  }
+  
+  #push-bottom {
+    position: absolute;
+    bottom: 0;
+  }
+::ng-deep .mat-expansion-panel-header {
+    padding: 0 16px !important;
+    
+}
+
+::ng-deep .mat-nav-list .mat-icon {
+    margin-right: 10px;
+}
+::ng-deep .mat-expansion-panel-body {
+  padding: 0px 0px 3px 15px !important;
+}
+::ng-deep .mat-nav-list .is-active {
+  background-color: #394DEB!important;
+  border-left     : 8px solid #394DEB;
+  width           : calc(100% - 8px)!important;;
+}
+
+
+::ng-deep .mat-expansion-indicator::after {
+  color:black;
+}
+.logo{
+  /* Layout Properties */
+  position: relative;
+top: 15px;
+left: 30px;
+width: 113px;
+height: 64px;
+/* UI Properties */
+background: transparent url('./../../../../assets/images/mars_logo.png') 0% 0% no-repeat padding-box;
+mix-blend-mode: darken;
+opacity: 1;
+}
+.bg-marsblue-900{
+  padding-top: 20px;
+  background: #0112A1 0% 0% no-repeat padding-box;
+border-top-right-radius: 25px;
+border-bottom-right-radius: 25px;
+opacity: 1;
+}
+mat-list-item,mat-expansion-panel {
+  background: #0112A1 0% 0% no-repeat padding-box !important;
+}
+
+ion-icon{
+  font-size: 20px;
+  margin-right: 6px;
+}
+.h-96{
+  height: 28rem !important;
+}

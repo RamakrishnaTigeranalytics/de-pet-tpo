@@ -1,0 +1,527 @@
+<div class="min-h-screen ">
+    <div class="bg-white-50 h-16 w-99 ml-0.5 shadow-sm py-4">
+        <form>
+        <div class="ml-8 flex">
+            
+            <div class="w-2/4">
+                <div class="absolute">
+                    <ion-icon name="search-outline" style="font-size: 15px;
+                    color: rgb(148 163 184 / var(--tw-text-opacity));
+                    padding: 10px;"></ion-icon>
+                </div>
+                <input class=" block p-1 pl-7 h-9 w-full rounded shadow-sm text-sm text-gray-400  outline-none border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" type="text" placeholder="Search Your Past Scenarios">
+            </div>
+            <div class="w-36">
+                <button style=" background: #F8FAFD 0% 0% no-repeat padding-box;font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-medium) var(--unnamed-font-size-14)/var(--unnamed-line-spacing-18) Mulish;
+                font: normal normal medium 14px/18px Mulish;
+                "type="button" class="w-full h-9 py-1 rounded shadow-sm px-5 mr-2 mb-2 ml-5 text-sm outline-none font-medium text-#66768F focus:outline-none bg-marslblue-100 text-gray-400 font-medium border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Search</button>
+            </div>
+        
+        </div>
+    </form>
+    </div>
+    <div class="ml-8 mr-8 ">
+        <div class="mt-4  h-9 ">
+            <div class="grid grid-cols-6 gap-4">
+                <div class="col-span-5 text-black">
+                    <div>
+                            <button class="rounded-full p-1 w-50 h-8 bg-white-100" [ngClass]="{ 'active-headtab': activeOptimizer == true }" (click)="toggleScenarioChange('Optimizer')">Optimizer Scenarios</button>
+                            <button class=" rounded-full p-1 w-50 h-8  bg-white-100" [ngClass]="{ 'active-headtab': activePlanner == true }"(click)="toggleScenarioChange('Planner')">Scenario Planner</button>
+                    </div>
+                </div>
+                <div class="text-black">
+                    <button class="text-marsblue-600">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="8.61" height="8.61" viewBox="0 0 8.61 8.61">
+                            <path id="Path_12477" data-name="Path 12477" d="M13.61,9.92H9.92v3.69H8.69V9.92H5V8.69H8.69V5H9.92V8.69h3.69Z" transform="translate(-5 -5)" fill="#0012a0"/>
+                          </svg>                          
+                      Create New Scenario
+                    </button>
+                </div>
+              </div>
+        </div>
+        <div class="mt-4  h-12 bg-white-50 shadow-3xl">
+            <div class="ml-5 mr-5">
+            <div class="grid grid-cols-2">
+                <div class="col-span-1">
+                    <button class=" text-black mt-3" [ngClass]="{'active-tab': tab==='tab1'}"(click)="statusChange('active')"> Active</button>
+                    <button class="text-black ml-5 mt-3" [ngClass]="{'active-tab': tab==='tab2'}" (click)="statusChange('completed')"> Completed</button>
+                    <button class="text-black ml-5 mt-3" [ngClass]="{'active-tab': tab==='tab3'}" (click)="statusChange('viewall')"> View All</button>
+                </div>
+                <div class="actions_buttons mt-2">
+                    <ul>
+                        <li class="text-black">
+                            <button class="h-8 w-10 bg-white-200 rounded ">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14.59" height="14.59" viewBox="0 0 14.59 14.59">
+                                    <path id="Icon_ionic-ios-search" data-name="Icon ionic-ios-search" d="M18.919,18.027l-4.058-4.095a5.783,5.783,0,1,0-.878.889l4.031,4.068a.625.625,0,0,0,.881.023A.628.628,0,0,0,18.919,18.027Zm-8.6-3.157a4.566,4.566,0,1,1,3.23-1.337A4.539,4.539,0,0,1,10.317,14.87Z" transform="translate(-4.5 -4.493)" fill="#66768f"/>
+                                  </svg>
+                                  
+                            </button>
+                            
+                        </li>
+                        <li class="text-black">
+                            <div>
+                                <div class="relative inline-flex self-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="ionicon h-8 w-5 text-sm bg-white-200 rounded absolute top-0 right-0" viewBox="0 0 512 512"><title>Caret Down</title><path d="M98 190.06l139.78 163.12a24 24 0 0036.44 0L414 190.06c13.34-15.57 2.28-39.62-18.22-39.62h-279.6c-20.5 0-31.56 24.05-18.18 39.62z"/></svg>
+                                    
+                                   
+                                    <select class="text-xs font-bold rounded  text-gray-600 h-8 w-40 pr-1 bg-white border-2 border-gray-200 focus:outline-none appearance-none">
+                                        <option style="margin-left: -10px;">Sort by : Most Recent</option>
+                                        <option>Z-A</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="text-black">
+                            <button class="h-8 w-10 bg-white-200 rounded ">
+                                <ion-icon name="options-outline"></ion-icon>
+                                
+                            </button>
+                            
+                        </li>
+                        <li class="text-black">
+                            <button class="h-8 w-10 bg-white-200 rounded ">
+                                <ion-icon name="swap-horizontal-outline"></ion-icon>
+                            </button>
+                            
+                        </li>
+                        <span class="text-black ml-4">
+                            <button class="h-8 w-10 bg-white-50  " [ngClass]="{ 'active-headtab-card':  activeTable== true }" (click)="toggleCardView('table')">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="10" viewBox="0 0 17 10">
+                                    <g id="Group_6496" data-name="Group 6496" transform="translate(-992 -115)">
+                                      <rect id="Rectangle_5275" data-name="Rectangle 5275" width="17" height="2" transform="translate(992 115)" fill="#66768f"/>
+                                      <rect id="Rectangle_5276" data-name="Rectangle 5276" width="17" height="2" transform="translate(992 119)" fill="#66768f"/>
+                                      <rect id="Rectangle_5277" data-name="Rectangle 5277" width="17" height="2" transform="translate(992 123)" fill="#66768f"/>
+                                    </g>
+                                  </svg>
+                                  
+                            </button>
+                            
+                        </span>
+                        <span class="text-black">
+                            <button class="h-8 w-10 " [ngClass]="{ 'active-headtab-card': activeCard == true }"(click)="toggleCardView('card')">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 13 13">
+                                    <g id="Group_6497" data-name="Group 6497" transform="translate(-1017 -115)">
+                                      <g id="Rectangle_5278" data-name="Rectangle 5278" transform="translate(1017 115)" fill="none" stroke="#66768f" stroke-width="1">
+                                        <rect width="6" height="6" stroke="none"/>
+                                        <rect x="0.5" y="0.5" width="5" height="5" fill="none"/>
+                                      </g>
+                                      <g id="Rectangle_5279" data-name="Rectangle 5279" transform="translate(1024 115)" fill="none" stroke="#66768f" stroke-width="1">
+                                        <rect width="6" height="6" stroke="none"/>
+                                        <rect x="0.5" y="0.5" width="5" height="5" fill="none"/>
+                                      </g>
+                                      <g id="Rectangle_5280" data-name="Rectangle 5280" transform="translate(1024 122)" fill="none" stroke="#66768f" stroke-width="1">
+                                        <rect width="6" height="6" stroke="none"/>
+                                        <rect x="0.5" y="0.5" width="5" height="5" fill="none"/>
+                                      </g>
+                                      <g id="Rectangle_5281" data-name="Rectangle 5281" transform="translate(1017 122)" fill="none" stroke="#66768f" stroke-width="1">
+                                        <rect width="6" height="6" stroke="none"/>
+                                        <rect x="0.5" y="0.5" width="5" height="5" fill="none"/>
+                                      </g>
+                                    </g>
+                                  </svg>
+                                  
+                            </button>
+                            
+                        </span>
+
+                    </ul>
+                </div>
+              </div>
+            </div>
+        </div>
+        
+        <div class="mt-4 bg-white-50 shadow-3xl cardview">
+            <div [ngStyle]="{'display': activity == 'Pending' ? 'block' : 'none' }">
+            <div class="ml-5 mr-5">
+                <div class="grid grid-cols-4 gap-4">
+                    <div *ngFor="let item of cardLoadData" class="text-black  mt-4 bg-white-50 shadow-4xl h-50 cardviewborder">
+                        <div class="flex mt-4">
+                            <div class="w-6">
+                                <div class="w-0.5 h-5 bg-marsblue-500">
+
+                                </div>
+                            </div>
+                            <div class="w-44 h-7 break-all">
+                                <label>{{item.name}}</label>
+                            </div>
+                            <div class="text-black">
+                                <button>
+                                    <ion-icon name="ellipsis-vertical-outline" class="ml-8"></ion-icon>
+                                </button>
+                                
+                            </div>
+                        </div>
+                        <div class="border border-marsgray-100 mt-2 ml-5 mr-5"></div>
+                        <div class="mt-1 ml-6">
+                           <span class="text-xs card_sub_head">
+                            Retailer
+                           </span>
+                           <div class="text-sm card_sub_head1">
+                            {{item.data[0].account_name}}
+                           </div> 
+                        </div>
+                        <div  class="mt-1 ml-6">
+                            <span class="text-xs">
+                                Product Group
+                            </span>
+                            <div  class="text-sm">
+                                {{item.data[0].product_group}}
+                            </div>
+                        </div>
+                        <div  class="mt-1 ml-6 ">
+                            <span class="text-xs">
+                                Objective Function
+                            </span>
+                            <div  class="text-sm">
+                               {{item.scenario_type}}
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                  </div>
+            </div>
+            <!-- <div class="ml-5 mr-5">
+                <div class="grid grid-cols-4 gap-4">
+                    <div class="text-black  mt-4 bg-white-50 shadow-4xl h-50 cardviewborder">
+                        <div class="flex mt-4">
+                            <div class="w-6">
+                                <div class="w-0.5 h-5 bg-marsblue-500">
+
+                                </div>
+                            </div>
+                            <div class="w-44 h-7 break-all">
+                                <label>Test SCenario with optimizer</label>
+                            </div>
+                            <div class="text-black">
+                                <button>
+                                    <ion-icon name="ellipsis-vertical-outline" class="ml-8"></ion-icon>
+                                </button>
+                                
+                            </div>
+                        </div>
+                        
+                        <div class="mt-3 ml-6">
+                           <span class="text-xs">
+                            Retailer
+                           </span>
+                           <div class="text-sm">
+                            dmkapodnmaod[mnd]
+                           </div> 
+                        </div>
+                        <div  class="mt-1 ml-6">
+                            <span class="text-xs">
+                                Product Group
+                            </span>
+                            <div  class="text-sm">
+                                dmkapodnmaod[mnd]
+                            </div>
+                        </div>
+                        <div  class="mt-1 ml-6 ">
+                            <span class="text-xs">
+                                Objective Function
+                            </span>
+                            <div  class="text-sm">
+                                dmkapodnmaod[mnd]
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-black  mt-4 bg-white-50 shadow-4xl h-50 cardviewborder">
+                        <div class="flex mt-4">
+                            <div class="w-6">
+                                <div class="w-0.5 h-5 bg-marsblue-500">
+
+                                </div>
+                            </div>
+                            <div class="w-44 h-7 break-all">
+                                <label>Test SCenario with optimizer</label>
+                            </div>
+                            <div class="text-black">
+                                <button>
+                                    <ion-icon name="ellipsis-vertical-outline" class="ml-8"></ion-icon>
+                                </button>
+                                
+                            </div>
+                        </div>
+                        
+                        <div class="mt-3 ml-6">
+                           <span class="text-xs">
+                            Retailer
+                           </span>
+                           <div class="text-sm">
+                            dmkapodnmaod[mnd]
+                           </div> 
+                        </div>
+                        <div  class="mt-1 ml-6">
+                            <span class="text-xs">
+                                Product Group
+                            </span>
+                            <div  class="text-sm">
+                                dmkapodnmaod[mnd]
+                            </div>
+                        </div>
+                        <div  class="mt-1 ml-6 ">
+                            <span class="text-xs">
+                                Objective Function
+                            </span>
+                            <div  class="text-sm">
+                                dmkapodnmaod[mnd]
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-black  mt-4 bg-white-50 shadow-4xl h-50 cardviewborder">
+                        <div class="flex mt-4">
+                            <div class="w-6">
+                                <div class="w-0.5 h-5 bg-marsblue-500">
+
+                                </div>
+                            </div>
+                            <div class="w-44 h-7 break-all">
+                                <label>Test SCenario with optimizer</label>
+                            </div>
+                            <div class="text-black">
+                                <button>
+                                    <ion-icon name="ellipsis-vertical-outline" class="ml-8"></ion-icon>
+                                </button>
+                                
+                            </div>
+                        </div>
+                        
+                        <div class="mt-3 ml-6">
+                           <span class="text-xs">
+                            Retailer
+                           </span>
+                           <div class="text-sm">
+                            dmkapodnmaod[mnd]
+                           </div> 
+                        </div>
+                        <div  class="mt-1 ml-6">
+                            <span class="text-xs">
+                                Product Group
+                            </span>
+                            <div  class="text-sm">
+                                dmkapodnmaod[mnd]
+                            </div>
+                        </div>
+                        <div  class="mt-1 ml-6 ">
+                            <span class="text-xs">
+                                Objective Function
+                            </span>
+                            <div  class="text-sm">
+                                dmkapodnmaod[mnd]
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-black  mt-4 bg-white-50 shadow-4xl h-50 cardviewborder">
+                        <div class="flex mt-4">
+                            <div class="w-6">
+                                <div class="w-0.5 h-5 bg-marsblue-500">
+
+                                </div>
+                            </div>
+                            <div class="w-44 h-7 break-all">
+                                <label>Test SCenario with optimizer with optimizer</label>
+                            </div>
+                            <div class="text-black">
+                                <button>
+                                    <ion-icon name="ellipsis-vertical-outline" class="ml-8"></ion-icon>
+                                </button>
+                                
+                            </div>
+                        </div>
+                        
+                        <div class="mt-3 ml-6">
+                           <span class="text-xs">
+                            Retailer
+                           </span>
+                           <div class="text-sm">
+                            dmkapodnmaod[mnd]
+                           </div> 
+                        </div>
+                        <div  class="mt-1 ml-6">
+                            <span class="text-xs">
+                                Product Group
+                            </span>
+                            <div  class="text-sm">
+                                dmkapodnmaod[mnd]
+                            </div>
+                        </div>
+                        <div  class="mt-1 ml-6 ">
+                            <span class="text-xs">
+                                Objective Function
+                            </span>
+                            <div  class="text-sm">
+                                dmkapodnmaod[mnd]
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+            </div> -->
+        </div>
+
+        <div [ngStyle]="{'display': activity == 'Success' ? 'block' : 'none' }">
+            <table class="overflow-y-auto h-32">
+                <thead>
+                  <tr>
+                    <th>Scenario Name</th>
+                    <th>Retailer Name</th>
+                    <th>Product Group</th>
+                    <th>Date Created</th>
+                    <th>Lase Modified</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
+                    <td>Malcolm Lockyer</td>
+                    <td>1961</td>
+                    <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
+                    <td>Malcolm Lockyer</td>
+                    <td>
+                        <div class="flex">
+                            <div class="w-6">
+                                <ion-icon name="copy-outline"></ion-icon>
+                            </div>
+                            <div class="w-6">
+                                <ion-icon name="trash-outline"></ion-icon>
+                            </div>
+                            <div class="w-6">
+                                <ion-icon name="ellipsis-vertical-outline"></ion-icon>
+                            </div>
+                        </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
+                    <td>Malcolm Lockyer</td>
+                    <td>1961</td>
+                    <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
+                    <td>Malcolm Lockyer</td>
+                    <td>
+                        <div class="flex">
+                            <div class="w-6">
+                                <ion-icon name="copy-outline"></ion-icon>
+                            </div>
+                            <div class="w-6">
+                                <ion-icon name="trash-outline"></ion-icon>
+                            </div>
+                            <div class="w-6">
+                                <ion-icon name="ellipsis-vertical-outline"></ion-icon>
+                            </div>
+                        </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
+                    <td>Malcolm Lockyer</td>
+                    <td>1961</td>
+                    <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
+                    <td>Malcolm Lockyer</td>
+                    <td>
+                        <div class="flex">
+                            <div class="w-6">
+                                <ion-icon name="copy-outline"></ion-icon>
+                            </div>
+                            <div class="w-6">
+                                <ion-icon name="trash-outline"></ion-icon>
+                            </div>
+                            <div class="w-6">
+                                <ion-icon name="ellipsis-vertical-outline"></ion-icon>
+                            </div>
+                        </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
+                    <td>Malcolm Lockyer</td>
+                    <td>1961</td>
+                    <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
+                    <td>Malcolm Lockyer</td>
+                    <td>
+                        <div class="flex">
+                            <div class="w-6">
+                                <ion-icon name="copy-outline"></ion-icon>
+                            </div>
+                            <div class="w-6">
+                                <ion-icon name="trash-outline"></ion-icon>
+                            </div>
+                            <div class="w-6">
+                                <ion-icon name="ellipsis-vertical-outline"></ion-icon>
+                            </div>
+                        </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
+                    <td>Malcolm Lockyer</td>
+                    <td>1961</td>
+                    <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
+                    <td>Malcolm Lockyer</td>
+                    <td>
+                        <div class="flex">
+                            <div class="w-6">
+                                <ion-icon name="copy-outline"></ion-icon>
+                            </div>
+                            <div class="w-6">
+                                <ion-icon name="trash-outline"></ion-icon>
+                            </div>
+                            <div class="w-6">
+                                <ion-icon name="ellipsis-vertical-outline"></ion-icon>
+                            </div>
+                        </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
+                    <td>Malcolm Lockyer</td>
+                    <td>1961</td>
+                    <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
+                    <td>Malcolm Lockyer</td>
+                    <td>
+                        <div class="flex">
+                            <div class="w-6">
+                                <ion-icon name="copy-outline"></ion-icon>
+                            </div>
+                            <div class="w-6">
+                                <ion-icon name="trash-outline"></ion-icon>
+                            </div>
+                            <div class="w-6">
+                                <ion-icon name="ellipsis-vertical-outline"></ion-icon>
+                            </div>
+                        </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
+                    <td>Malcolm Lockyer</td>
+                    <td>1961</td>
+                    <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
+                    <td>Malcolm Lockyer</td>
+                    <td>
+                        <div class="flex">
+                            <div class="w-6">
+                                <ion-icon name="copy-outline"></ion-icon>
+                            </div>
+                            <div class="w-6">
+                                <ion-icon name="trash-outline"></ion-icon>
+                            </div>
+                            <div class="w-6">
+                                <ion-icon name="ellipsis-vertical-outline"></ion-icon>
+                            </div>
+                        </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+            
+           
+        </div>
+    </div>
+   
+</div>
+
+
+
+
